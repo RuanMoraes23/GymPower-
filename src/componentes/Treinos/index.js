@@ -43,7 +43,7 @@ const Treinos = () => {
     useEffect(() => {
         const fetchExercicios = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/exercicios');
+                const response = await axios.get('https://api-treinos-2.onrender.com/exercicios');
                 if (Array.isArray(response.data.exercicios)) {
                     setListaExercicios(response.data.exercicios);
                 }
@@ -54,7 +54,7 @@ const Treinos = () => {
 
         const fetchTreinos = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/treino');
+                const response = await axios.get('https://api-treinos-2.onrender.com/treino');
                 setTreinosCadastrados(response.data);
             } catch (error) {
                 console.log(error);
@@ -69,7 +69,7 @@ const Treinos = () => {
         e.preventDefault();
         if (exercicios.length > 0) {
             try {
-                const response = await axios.post('http://localhost:3000/treino', {
+                const response = await axios.post('https://api-treinos-2.onrender.com/treino', {
                     nome: nomeTreino,
                     exercicios: exercicios.map(exercicio1 => ({
                         exercicio: exercicio1.exercicio.id,
@@ -94,7 +94,7 @@ const Treinos = () => {
 
     const handleProcuraTreinos = async (e) => {
         try {
-            const response = await axios.get('http://localhost:3000/treino');
+            const response = await axios.get('https://api-treinos-2.onrender.com/treino');
             setTreinosCadastrados(response.data);
         } catch (error) {
             console.log(error);
@@ -140,7 +140,7 @@ const Treinos = () => {
 
     const handleDeleteTreino = async (treinoId) => {
         try {
-            const response = await axios.delete(`http://localhost:3000/treino/${treinoId}`);
+            const response = await axios.delete(`https://api-treinos-2.onrender.com/treino/${treinoId}`);
             console.log(response.data);
             setSuccessMessage('Treino excluído com sucesso!');
             handleProcuraTreinos(); // Atualizar a lista de treinos cadastrados

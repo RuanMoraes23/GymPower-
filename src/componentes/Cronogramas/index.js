@@ -38,7 +38,7 @@ const Cronogramas = () => {
     useEffect(() => {
         const buscarTreinos = async () => {
             try {
-                const resposta = await axios.get('http://localhost:3000/treino');
+                const resposta = await axios.get('https://api-treinos-2.onrender.com/treino');
                 console.log(resposta.data)
                 if (Array.isArray(resposta.data)) {
                     setTreinos(resposta.data);

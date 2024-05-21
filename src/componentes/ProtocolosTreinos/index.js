@@ -39,7 +39,7 @@ const ProtocolosTreino = () => {
     useEffect(() => {
         const buscarCronogramas = async () => {
             try {
-                const resposta = await axios.get('http://localhost:3000/cronograma');
+                const resposta = await axios.get('https://api-treinos-2.onrender.com/cronograma');
                 setCronogramas(resposta.data.listadeCronogramas);
             } catch (erro) {
                 console.log(erro);
@@ -146,7 +146,7 @@ const ProtocolosTreino = () => {
         console.log('CONTROLE DE PESO:', controlePeso);
 
         try {
-            const response = await axios.post('http://localhost:3000/controlePeso', controlePeso);
+            const response = await axios.post('https://api-treinos-2.onrender.com/controlePeso', controlePeso);
             console.log(response.data);
             alert('Controle de peso salvo com sucesso!');
             setConcluiuTreinoDoDia(false); // Reset the state after saving
@@ -184,7 +184,7 @@ const ProtocolosTreino = () => {
             console.log('achou:',exercicioEncontrado);
             if (exercicioEncontrado) {
                 try {
-                    const resposta = await axios.get(`http://localhost:3000/controlePeso`);
+                    const resposta = await axios.get(`https://api-treinos-2.onrender.com/controlePeso`);
                     const listaControleDePesos = [...resposta.data.listaControleDePesos];
                     
                     // Verifica o dia da semana da data selecionada
