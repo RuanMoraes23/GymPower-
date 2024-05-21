@@ -52,7 +52,7 @@ const Cronogramas = () => {
 
         const buscarCronogramas = async () => {
             try {
-                const resposta = await axios.get('http://localhost:3000/cronograma');
+                const resposta = await axios.get('https://api-treinos-2.onrender.com/cronograma');
                 if (Array.isArray(resposta.data.listadeCronogramas)) {
                     console.log('entrou na array')
                     setCronogramas(resposta.data.listadeCronogramas);
@@ -79,7 +79,7 @@ const Cronogramas = () => {
         };
 
         try {
-            await axios.post('http://localhost:3000/cronograma', novoCronograma);
+            await axios.post('https://api-treinos-2.onrender.com/cronograma', novoCronograma);
             setNomeCronograma('');
             setDias({
                 segunda: '',
@@ -90,7 +90,7 @@ const Cronogramas = () => {
                 sabado: '',
                 domingo: ''
             });
-            const resposta = await axios.get('http://localhost:3000/cronograma');
+            const resposta = await axios.get('https://api-treinos-2.onrender.com/cronograma');
             if (Array.isArray(resposta.data)) {
                 setCronogramas(resposta.data);
             } else {
