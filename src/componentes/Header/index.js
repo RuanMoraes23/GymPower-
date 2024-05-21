@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import logoimg from "../../imagens/GYMPOWERLOGO.png";
 import { NavLink } from "react-router-dom";
@@ -16,7 +16,11 @@ const StyledNavLink = styled(NavLink)`
 
 const HeaderContainer = styled.header`
   background-color: #2c3e50;
-  padding: 0px 0;
+  padding: 10px 0;
+
+  @media (max-width: 768px) {
+    padding: 5px 0;
+  }
 `;
 
 const LogoContainer = styled.div`
@@ -26,18 +30,40 @@ const LogoContainer = styled.div`
 
 const Logo = styled.img`
   width: 100px;
+
+  @media (max-width: 768px) {
+    width: 80px;
+  }
+
+  @media (max-width: 480px) {
+    width: 60px;
+  }
 `;
 
 const LogoText = styled.span`
   color: #ffffff;
   font-size: 1.5rem;
   margin-left: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-left: 5px;
+  }
 `;
 
 const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const NavLinks = styled.ul`
@@ -46,6 +72,11 @@ const NavLinks = styled.ul`
   margin: 0;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 const NavLinkItem = styled.li`
@@ -54,6 +85,12 @@ const NavLinkItem = styled.li`
 
   &:hover ul {
     display: block;
+  }
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
   }
 `;
 
@@ -67,12 +104,21 @@ const SubMenu = styled.ul`
   padding: 10px;
   margin: 0;
   border-radius: 5px;
+
+  @media (max-width: 768px) {
+    position: static;
+    width: 100%;
+  }
 `;
 
 const SubMenuItem = styled.li`
   margin: 0;
   &:hover {
     background-color: #34495e;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px 0;
   }
 `;
 
@@ -85,6 +131,13 @@ const Btn = styled.a`
   margin-right: 15px;
   &:hover {
     background-color: #2ecc71; /* Cor ao passar o mouse */
+  }
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
   }
 `;
 
@@ -118,10 +171,10 @@ const Header = () => (
             <StyledNavLink to="/meu-cronograma">Meu Cronograma</StyledNavLink>
           </NavLinkItem>
           <NavLinkItem>
-            <StyledNavLink href="#sobre">Sobre</StyledNavLink>
+            <StyledNavLink to="#sobre">Sobre</StyledNavLink>
           </NavLinkItem>
           <NavLinkItem>
-            <StyledNavLink href="#contato">Contato</StyledNavLink>
+            <StyledNavLink to="#contato">Contato</StyledNavLink>
           </NavLinkItem>
         </NavLinks>
         <Btn href="#login">Login/Registro</Btn>

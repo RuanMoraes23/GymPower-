@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import styled from 'styled-components';
 import Exercicios from './componentes/Exercicios';
 import Header from './componentes/Header';
-import styled from 'styled-components';
 import SobreGymPower from './componentes/sobreGymPower';
 import Banner from './componentes/bannerCorpo';
 import Footer from './componentes/footer';
@@ -20,15 +20,16 @@ function App() {
   return (
     <Router>
       <AppContainer>
-        <Header/>
+        <Header />
         <Routes>
-          <Route path="/home" element={[<Banner/>,<SobreGymPower/>]} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<><Banner /><SobreGymPower /></>} />
           <Route path="/exercicios" element={<Exercicios />} />
           <Route path="/treinos" element={<Treinos />} />
           <Route path="/cronogramas" element={<Cronogramas />} />
           <Route path="/meu-cronograma" element={<ProtocolosTreino />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </AppContainer>
     </Router>
   );
