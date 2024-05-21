@@ -179,8 +179,8 @@ const Exercicios = () => {
 
     const handleExcluirExercicio = async (exercicioId) => {
         try {
-            await axios.delete(`http://localhost:3000/exercicios/${exercicioId}`);
-            const listaAtualizada = await axios.get('http://localhost:3000/exercicios');
+            await axios.delete(`https://api-treinos-2.onrender.com/exercicios/${exercicioId}`);
+            const listaAtualizada = await axios.get('https://api-treinos-2.onrender.com/exercicios');
             setListaExerciciosPesquisa(listaAtualizada.data.exercicios);
             setMensagem('Exercício deletado com sucesso!'); // Exibir mensagem de sucesso
         } catch (error) {
@@ -192,12 +192,12 @@ const Exercicios = () => {
         e.preventDefault()
         if (exercicioNovo) {
             try {
-                const response = await axios.post('http://localhost:3000/exercicios', {
+                const response = await axios.post('https://api-treinos-2.onrender.com/exercicios', {
                     nome: exercicioNovo
                 });
                 setMensagem('Exercício cadastrado com sucesso!'); // Exibir mensagem de sucesso
                 setExercicioNovo(''); // Limpar o input
-                const listaAtualizada = await axios.get('http://localhost:3000/exercicios');
+                const listaAtualizada = await axios.get('https://api-treinos-2.onrender.com/exercicios');
                 setListaExerciciosPesquisa(listaAtualizada.data.exercicios);
             } catch (error) {
                 console.log(error);
@@ -208,7 +208,7 @@ const Exercicios = () => {
     const handleListaExercicios = async (e) => {
         const pesquisaExercicios = e.target.value;
         try {
-            const response = await axios.get('http://localhost:3000/exercicios');
+            const response = await axios.get('https://api-treinos-2.onrender.com/exercicios');
             if (Array.isArray(response.data.exercicios)) {
                 const listaFiltrada = response.data.exercicios.filter((exercicio) => exercicio.nome.includes(pesquisaExercicios));
                 setListaExerciciosPesquisa(listaFiltrada);
@@ -220,10 +220,10 @@ const Exercicios = () => {
 
     const handleModificarExercicio = async (exercicioId) => {
         try {
-            const response = await axios.put(`http://localhost:3000/exercicios/${exercicioId}`, {
+            const response = await axios.put(`https://api-treinos-2.onrender.com/exercicios/${exercicioId}`, {
                 nome: nomeEditando
             });
-            const listaAtualizada = await axios.get('http://localhost:3000/exercicios');
+            const listaAtualizada = await axios.get('https://api-treinos-2.onrender.com/exercicios');
             setListaExerciciosPesquisa(listaAtualizada.data.exercicios);
             setEditandoExercicioId(null);
             setMensagem('Exercício modificado com sucesso!');
@@ -241,7 +241,7 @@ const Exercicios = () => {
     useEffect(() => {
         const fetchExercicios = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/exercicios');
+                const response = await axios.get('https://api-treinos-2.onrender.com/exercicios');
                 if (Array.isArray(response.data.exercicios)) {
                     setListaExerciciosPesquisa(response.data.exercicios);
                 }
