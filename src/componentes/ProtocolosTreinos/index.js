@@ -155,7 +155,7 @@ const ProtocolosTreino = () => {
         console.log('CONTROLE DE PESO:', controlePeso);
 
         try {
-            const response = await axios.post('http://localhost:8000/controlePeso', controlePeso, {
+            const response = await axios.post('https://api-treinos-2.onrender.com/controlePeso', controlePeso, {
                 headers: {
                   'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
