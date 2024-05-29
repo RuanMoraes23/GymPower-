@@ -58,6 +58,12 @@ const LogoContainer = styled.div`
   align-items: center;
 `;
 
+const LogoLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+`;
+
 const Logo = styled.img`
   width: 100px;
 
@@ -227,10 +233,12 @@ const Header = () => {
     <HeaderContainer>
       <Container>
         <Nav>
-          <LogoContainer>
-            <Logo src={logoimg} alt="GymPower+" />
-            <LogoText>GymPower+</LogoText>
-          </LogoContainer>
+          <LogoLink to="/">
+            <LogoContainer>
+              <Logo src={logoimg} alt="GymPower+" />
+              <LogoText>GymPower+</LogoText>
+            </LogoContainer>
+          </LogoLink>
           <MenuIcon onClick={toggleMenu}>
             {isOpen ? <FaTimes /> : <FaBars />}
           </MenuIcon>
@@ -264,7 +272,7 @@ const Header = () => {
           </NavLinks>
           {user ? (
             <>
-              <UsuarioLogado>Bem-vindo, {user.usuario.nome}{console.log('user:', user)}</UsuarioLogado>
+              <UsuarioLogado>Bem-vindo, {user.usuario.nome}</UsuarioLogado>
               <LogoutButton onClick={logout}>Logout</LogoutButton>
             </>
           ) : (

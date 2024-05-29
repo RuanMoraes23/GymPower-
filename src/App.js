@@ -12,6 +12,7 @@ import ProtocolosTreino from './componentes/ProtocolosTreinos';
 import CadastroUsuario from './componentes/cadastro';
 import Login from './login';
 import { AuthProvider, AuthContext } from './componentes/autenticacao/AuthContext';
+import Home from './componentes/home';
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -36,8 +37,8 @@ function App() {
         <AppContainer>
           <Header />
           <Routes>
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<><Banner /><SobreGymPower /></>} />
+            <Route path="/" element={<><Banner /><SobreGymPower /></>} />
+            <Route path="/home" element={<Home />} />
             <Route 
               path="/exercicios" 
               element={

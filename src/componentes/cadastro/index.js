@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import BannerImage from '../../imagens/banner-image.jpg';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../autenticacao/AuthContext'
 
 const CadastroContainer = styled.section`
   background-image: url(${BannerImage});
@@ -63,26 +65,54 @@ const FormButton = styled.button`
   }
 `;
 
+const MensagemCadastro = styled.h4`
+  color: #2c3e50;
+`
+
 const CadastroUsuario = () => {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
   const [mensagem, setMensagem] = useState('');
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    try {
+      const normalizedEmail = email.toLowerCase();
+      const response = await axios.post('https://api-treinos-2.onrender.com/usuarios/login', {
+        email: normalizedEmail,
+        senha: senha
+      });
+      const { token, user } = response.data;
+
+      localStorage.setItem('token', token);
+      login(user);
+
+      navigate('/home');
+      window.location.reload();
+    } catch (error) {
+
+    }
+  };
 
   const handleCadastro = async (e) => {
     e.preventDefault();
     if (senha !== confirmarSenha) {
-      setMensagem('As senhas não coincidem');
+      setMensagem(<MensagemCadastro>As senhas não coincidem</MensagemCadastro>);
       return;
     }
 
     try {
-      const response = await axios.post('https://api-treinos-2.onrender.com/usuarios/registrar', { nome, email, senha });
-      setMensagem(response.data.message);
+      const normalizedEmail = email.toLowerCase();
+      console.log(normalizedEmail);
+      const response = await axios.post('https://api-treinos-2.onrender.com/usuarios/registrar', { nome, email: normalizedEmail, senha });
+      setMensagem(<MensagemCadastro>{response.data.message}</MensagemCadastro>);
+      handleLogin();
     } catch (error) {
       console.error('Erro ao cadastrar usuário:', error);
-      setMensagem('Erro ao cadastrar usuário');
+      setMensagem(<MensagemCadastro>Erro ao cadastrar usuário</MensagemCadastro>);
     }
   };
 

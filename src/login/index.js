@@ -60,9 +60,11 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        console.log('entrou')
         try {
+            const normalizedEmail = email.toLowerCase();
             const response = await axios.post('https://api-treinos-2.onrender.com/usuarios/login', {
-                email: email,
+                email: normalizedEmail,
                 senha: password
             });
             const { token, user } = response.data;
