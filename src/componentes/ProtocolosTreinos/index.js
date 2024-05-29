@@ -196,7 +196,7 @@ const ProtocolosTreino = () => {
             console.log('achou:', exercicioEncontrado);
             if (exercicioEncontrado) {
                 try {
-                    const resposta = await axios.get(`http://localhost:8000/controlePeso/${user.usuario._id}`, {
+                    const resposta = await axios.get(`https://api-treinos-2.onrender.com/controlePeso/${user.usuario._id}`, {
                         headers: {
                           'Authorization': `Bearer ${localStorage.getItem('token')}`
                         }
