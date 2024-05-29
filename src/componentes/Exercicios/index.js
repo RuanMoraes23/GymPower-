@@ -230,12 +230,12 @@ const Exercicios = () => {
 
   const handleExcluirExercicio = async (exercicioId) => {
     try {
-      await axios.delete(`http://localhost:8000/exercicios/${exercicioId}`, {
+      await axios.delete(`https://api-treinos-2.onrender.com/exercicios/${exercicioId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
-      const listaAtualizada = await axios.get(`http://localhost:8000/exercicios/${user.id}`, {
+      const listaAtualizada = await axios.get(`https://api-treinos-2.onrender.com/exercicios/${user.id}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -252,7 +252,7 @@ const Exercicios = () => {
     if (exercicioNovo) {
       try {
         console.log('teste',user.id)
-        const response = await axios.post('http://localhost:8000/exercicios', {
+        const response = await axios.post('https://api-treinos-2.onrender.com/exercicios', {
           nome: exercicioNovo,
           userId: user.id // Adicione o ID do usuário ao cadastrar o exercício
         }, {
@@ -262,7 +262,7 @@ const Exercicios = () => {
         });
         setMensagem('Exercício cadastrado com sucesso!');
         setExercicioNovo('');
-        const listaAtualizada = await axios.get(`http://localhost:8000/exercicios/${user.id}`, {
+        const listaAtualizada = await axios.get(`https://api-treinos-2.onrender.com/exercicios/${user.id}`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
@@ -277,7 +277,7 @@ const Exercicios = () => {
   const handleListaExercicios = async (e) => {
     const pesquisaExercicios = e.target.value;
     try {
-      const response = await axios.get(`http://localhost:8000/exercicios/${user.id}`, {
+      const response = await axios.get(`https://api-treinos-2.onrender.com/exercicios/${user.id}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -293,14 +293,14 @@ const Exercicios = () => {
 
   const handleModificarExercicio = async (exercicioId) => {
     try {
-      const response = await axios.put(`http://localhost:8000/exercicios/${exercicioId}`, {
+      const response = await axios.put(`https://api-treinos-2.onrender.com/exercicios/${exercicioId}`, {
         nome: nomeEditando
       }, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
-      const listaAtualizada = await axios.get(`http://localhost:8000/exercicios/${user.id}`, {
+      const listaAtualizada = await axios.get(`https://api-treinos-2.onrender.com/exercicios/${user.id}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -322,7 +322,7 @@ const Exercicios = () => {
   useEffect(() => {
     const fetchExercicios = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/exercicios/${user.id}`, {
+        const response = await axios.get(`https://api-treinos-2.onrender.com/exercicios/${user.id}`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }

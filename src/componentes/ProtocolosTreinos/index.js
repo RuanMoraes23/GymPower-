@@ -42,7 +42,7 @@ const ProtocolosTreino = () => {
     useEffect(() => {
         const buscarCronogramas = async () => {
             try {
-                const resposta = await axios.get(`http://localhost:8000/cronogramas/${user.usuario._id}`, {
+                const resposta = await axios.get(`https://api-treinos-2.onrender.com/cronogramas/${user.usuario._id}`, {
                     headers: {
                       'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }

@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.get('http://localhost:8000/usuarios/me', {
+            axios.get('https://api-treinos-2.onrender.com/usuarios/me', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

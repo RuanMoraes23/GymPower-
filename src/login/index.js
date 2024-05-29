@@ -61,7 +61,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/usuarios/login', {
+            const response = await axios.post('https://api-treinos-2.onrender.com/usuarios/login', {
                 email: email,
                 senha: password
             });

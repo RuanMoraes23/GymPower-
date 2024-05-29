@@ -78,7 +78,7 @@ const CadastroUsuario = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/usuarios/registrar', { nome, email, senha });
+      const response = await axios.post('https://api-treinos-2.onrender.com/usuarios/registrar', { nome, email, senha });
       setMensagem(response.data.message);
     } catch (error) {
       console.error('Erro ao cadastrar usuário:', error);

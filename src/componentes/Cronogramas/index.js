@@ -30,7 +30,7 @@ const Cronogramas = () => {
     useEffect(() => {
         const buscarTreinos = async () => {
             try {
-                const resposta = await axios.get(`http://localhost:8000/treinos/${user.usuario._id}`, {
+                const resposta = await axios.get(`https://api-treinos-2.onrender.com/treinos/${user.usuario._id}`, {
                     headers: {
                       'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
@@ -48,7 +48,7 @@ const Cronogramas = () => {
 
         const buscarCronogramas = async () => {
             try {
-                const resposta = await axios.get('http://localhost:8000/cronograma');
+                const resposta = await axios.get('https://api-treinos-2.onrender.com/cronograma');
                 if (Array.isArray(resposta.data.listadeCronogramas)) {
                     console.log('entrou na array')
                     setCronogramas(resposta.data.listadeCronogramas);
@@ -77,7 +77,7 @@ const Cronogramas = () => {
 
         try {
             console.log('novo cronograma:', novoCronograma)
-            await axios.post('http://localhost:8000/cronograma', novoCronograma, {
+            await axios.post('https://api-treinos-2.onrender.com/cronograma', novoCronograma, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
@@ -92,7 +92,7 @@ const Cronogramas = () => {
                 sabado: '',
                 domingo: ''
             });
-            const resposta = await axios.get('http://localhost:8000/cronograma');
+            const resposta = await axios.get('https://api-treinos-2.onrender.com/cronograma');
             if (Array.isArray(resposta.data)) {
                 setCronogramas(resposta.data);
             } else {

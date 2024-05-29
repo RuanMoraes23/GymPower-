@@ -49,7 +49,7 @@ const Treinos = () => {
 
             const fetchExercicios = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:8000/exercicios/${user.usuario._id}`, {
+                    const response = await axios.get(`https://api-treinos-2.onrender.com/exercicios/${user.usuario._id}`, {
                         headers: {
                             'Authorization': `Bearer ${localStorage.getItem('token')}`
                         }
@@ -64,7 +64,7 @@ const Treinos = () => {
 
             const fetchTreinos = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:8000/treinos/${user.usuario._id}`, {
+                    const response = await axios.get(`https://api-treinos-2.onrender.com/treinos/${user.usuario._id}`, {
                         headers: {
                             'Authorization': `Bearer ${localStorage.getItem('token')}`
                         }
@@ -85,7 +85,7 @@ const Treinos = () => {
         e.preventDefault();
         if (exercicios.length > 0) {
             try {
-                const response = await axios.post('http://localhost:8000/treinos', {
+                const response = await axios.post('https://api-treinos-2.onrender.com/treinos', {
                     usuario: user.usuario._id,
                     nome: nomeTreino,
                     exercicios: exercicios.map(exercicio1 => ({
@@ -114,7 +114,7 @@ const Treinos = () => {
 
     const handleProcuraTreinos = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/treinos/${user.usuario._id}`, {
+            const response = await axios.get(`https://api-treinos-2.onrender.com/treinos/${user.usuario._id}`, {
                     headers: {
                       'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
@@ -165,7 +165,7 @@ const Treinos = () => {
 
     const handleDeleteTreino = async (treinoId) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/treinos/${treinoId}`,{
+            const response = await axios.delete(`https://api-treinos-2.onrender.com/treinos/${treinoId}`,{
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                   }
